@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/header'
-import './App.css';
+import './App.css'
+// import FontAwesome from 'react-fontawesome'
 
 class App extends Component {
   render() {
