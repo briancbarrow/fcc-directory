@@ -15,11 +15,10 @@ $fnt-open-sans = 'Open Sans', sans-serif
 $clr-white = #FFFFFF
 $clr-off-white = #F5F5F5
 $clr-gray = #6E7E85
-$clr-background = #FFFCF9
-$clr-lighter-green = #00D07C
-$clr-teal-blue = #40798C
-$clr-black = #1C0F13
-$clr-green = #32B97E
+$clr-blue = #0071bc
+$clr-yellow = #f2e214
+$clr-teal = #31b6be
+$clr-neon-green = #00ff00
 
 // -----------------------------------------------------------------------------
 // styles
@@ -32,36 +31,31 @@ html
   min-height 100vh
 
 body
-  background $clr-background
+  background $clr-off-white
   background radial-gradient(ellipse at center, $clr-jumpsuit2 0%, $clr-jumpsuit1 100%)
-  color $clr-green
+  color $clr-blue
   font-family $fnt-open-sans
   font-weight 300
-  max-width: 90%
-  margin: auto
-
-.container
-  display flex
-  justify-content space-between
-  padding 0 10px
-  section
-    display flex
-    align-items center
-    justify-content center
-    flex-direction column
-    width 50%
-    height 100vh
-    text-align center
-    position relative
-    &:first-child:after
-      content ''
-      background $clr-background
-      position absolute
-      right 0
-      top: 50%
-      transform: translateY(-50%)
-      width 1px
-      height 90%
+  max-width 100%
+  margin auto
 
 .main-header
-  text-align: center;
+  text-align center;
+  height 40px
+  background-color $clr-blue
+  width 100%
+  display flex
+  flex-direction column
+  justify-content center
+  color $clr-blue
+
+.login-button
+  width 200px
+  margin auto
+  border solid 1px $clr-teal
+  background-color $clr-off-white
+  font-weight: 900
+  &:hover
+    background-color $clr-teal
+    color $clr-blue
+    cursor: pointer
