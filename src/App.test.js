@@ -9,6 +9,6 @@ import state from './states/state'
 it('renders without crashing', () => {
   const div = document.createElement('div');
   div.setAttribute("id", "app");
-  ReactDOM.render(<App />, div);
-  // Render(state, <App />)
+  // ReactDOM.render(<App />, div);
+  Render(state, <App />)
 });
