@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import FontAwesome from 'react-fontawesome'
 
-class Header extends Component {
+class HeaderBar extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,7 +15,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="main-header">
+      <div className="header-bar">
         <div className="login-button" onClick={this.handleSubmit}>Log In with Github <FontAwesome name='github' />
         </div>
       </div>
@@ -23,4 +23,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default HeaderBar;

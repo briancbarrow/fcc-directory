@@ -39,7 +39,7 @@ body
   max-width 100%
   margin auto
 
-.main-header
+.header-bar
   text-align center;
   height 40px
   background-color $clr-blue
@@ -59,3 +59,34 @@ body
     background-color $clr-teal
     color $clr-blue
     cursor: pointer
+
+.profiles
+  display flex
+  flex-direction row
+  max-width 80%
+  justify-content: center
+  margin auto
+  flex-wrap: wrap
+
+.card
+  // border solid 1px black
+  margin auto
+  width 200px
+  display flex
+  flex-direction column
+
+.name
+  font-size 26px
+  margin -5px 0
+  font-weight 700
+  text-align left
+
+.profile-image
+  max-width 100%
+  max-height 100%
+
+.badge-link
+  text-decoration: none
+  color: $clr-blue
+  &:visited
+    color: $clr-blue
