@@ -15,8 +15,7 @@ const App = Component ({
         <h3 className="sub-heading">Directory</h3>
         <div className="profiles">
           {this.props.info.map(function(profile, index) {
-            console.log(profile);
-            return <ProfileCard info={profile} />
+            return <ProfileCard key={index} info={profile} />
           })}
         </div>
       </div>

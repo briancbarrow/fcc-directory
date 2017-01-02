@@ -1,5 +1,6 @@
 import { State, Actions } from 'jumpsuit'
 import profileImage from '../images/github-profile.jpg'
+import axios from 'axios'
 
 const mainState = State({
   initial: {
@@ -49,6 +50,8 @@ const mainState = State({
     ]
   }
 })
+
+
 
 const state = {
   main: mainState
