@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import {connect}  from 'react-redux';
 import HeaderBar from './components/header-bar'
 import ProfileCard from './components/profile-card'
+import Loading from './components/loading'
 import * as actions from './actions/index'
 
 import './App.css'
 
 class App extends Component {
 
-componentWillMount() {
-  console.log(this.props.profiles)
-  this.props.getProfiles()
-}
+// componentWillMount() {
+//   this.props.getProfiles()
+// }
 
   render(props) {
     console.log(this.props.profiles)
@@ -26,7 +26,7 @@ componentWillMount() {
               return <ProfileCard key={index} info={profile} />
             })}
           </div>
-          : ""}
+          : <Loading />}
       </div>
     )
   }

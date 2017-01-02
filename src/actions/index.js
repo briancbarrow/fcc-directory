@@ -12,6 +12,12 @@ export const updateProfilesState = (data) => ({
   data
 })
 
+export const SET_TEXT = 'SET_TEXT'
+export const setText = (text) => ({
+  type: SET_TEXT,
+  text
+})
+
 export const postProfile = (data) => {
   return dispatch => {
     console.log("Effect Triggered")
