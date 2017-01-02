@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {connect}  from 'react-redux';
 import HeaderBar from './components/header-bar'
 import ProfileCard from './components/profile-card'
-import { Component } from 'jumpsuit'
+// import * as actions from './actions/index'
 
 import './App.css'
-// import FontAwesome from 'react-fontawesome'
 
-const App = Component ({
+class App extends Component {
   render(props) {
     return (
       <div className="App">
@@ -14,17 +14,27 @@ const App = Component ({
         <h1 className="heading">Free Code Camp - Salt Lake City</h1>
         <h3 className="sub-heading">Directory</h3>
         <div className="profiles">
-          {this.props.info.map(function(profile, index) {
-            return <ProfileCard key={index} info={profile} />
+          {this.props.profiles.map(function(profile, index) {
+            return <ProfileCard key={profile.name} info={profile} />
           })}
         </div>
       </div>
     )
   }
-}, (state) => {
-  return {
-    info: state.main.profiles
-  }
-})
+}
 
-export default App;
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     postProfile: (data) => {
+//       return dispatch(actions.postProfile(data))
+//     }
+//   }
+// }
+
+const mapStateToProps = (state) => {
+  return {
+    profiles: state.profiles
+  }
+}
+
+export default connect(mapStateToProps, null)(App);

@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
+import {connect}  from 'react-redux'
 import FontAwesome from 'react-fontawesome'
-import { Effect, Actions } from 'jumpsuit'
-import axios from 'axios'
+import * as actions from '../actions/index'
+// import axios from 'axios'
 
-Effect('postProfile', (data) => {
-  return axios.post('https://directory-server.herokuapp.com/post')
-    .then((res) => {
-      console.log(res)
-    })
-})
 
 const myData = {
     name: "Brian Barrow",
@@ -33,11 +28,11 @@ class HeaderBar extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    // Actions.postProfile(this.myData)
-    console.log(myData)
+    this.props.postProfile(myData)
+    // console.log(myData)
   }
 
-  render() {
+  render(props) {
     return (
       <div className="header-bar">
         <div className="login-button" onClick={this.handleSubmit}>Log In with Github <FontAwesome name='github' />
@@ -47,4 +42,12 @@ class HeaderBar extends Component {
   }
 }
 
-export default HeaderBar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    postProfile: (data) => {
+      return dispatch(actions.postProfile(data))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(HeaderBar);

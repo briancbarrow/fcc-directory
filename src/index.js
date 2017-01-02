@@ -1,13 +1,14 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
 import App from './App';
 import './styles/app.css'
-import {Render} from 'jumpsuit'
-import state from './states/state'
+// import {Render} from 'jumpsuit'
+import store from './states/store'
 
-Render(state, <App />)
-
-// ReactDOM.render(
-//   <App />,
-//   document.getElementById('root')
-// );
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+);
