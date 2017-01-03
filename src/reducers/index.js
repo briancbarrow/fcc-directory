@@ -3,6 +3,7 @@ import * as actions from '../actions/index'
 
 const initialState = {
   profiles: [],
+  loading: false,
   loadText: "Loading",
   loadSpeed: 300
 }

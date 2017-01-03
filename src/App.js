@@ -8,25 +8,42 @@ import * as actions from './actions/index'
 import './App.css'
 
 class App extends Component {
+state = {loading: false,
+          dots: []}
 
-// componentWillMount() {
-//   this.props.getProfiles()
-// }
+componentDidMount() {
+  this.setState({loading: true})
+  this.interval = setInterval(() => {
+    if(this.state.dots.length === 3) {
+      return this.setState({dots: []})
+    }
+    this.setState({dots: [...this.state.dots, '.']})
+  }, this.props.data.loadSpeed)
+  this.props.getProfiles().then(() => {
+    this.setState({loading: false},() => {
+      clearInterval(this.interval)
+    })
+  })
+}
 
   render(props) {
-    console.log(this.props.profiles)
     return (
       <div className="App">
         <HeaderBar />
         <h1 className="heading">Free Code Camp - Salt Lake City</h1>
         <h3 className="sub-heading">Directory</h3>
-        {this.props.profiles.length >= 1 ?
-          <div className="profiles">
-            {this.props.profiles.map(function(profile, index) {
-              return <ProfileCard key={index} info={profile} />
-            })}
+        {this.state.loading ? <Loading dots={this.state.dots}/> : (
+          <div>
+            {this.props.data.profiles.length > 0 ?
+            <div className="profiles">
+              {this.props.data.profiles.map(function(profile, index) {
+                return <ProfileCard key={index} info={profile} />
+              })}
+            </div>
+            : <div><h1>No Profile Yet</h1></div>}
           </div>
-          : <Loading />}
+        )}
+
       </div>
     )
   }
@@ -44,7 +61,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    profiles: state.profiles
+    data: state
   }
 }
 

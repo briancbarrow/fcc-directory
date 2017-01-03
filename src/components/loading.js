@@ -2,34 +2,39 @@ import React, { Component } from 'react'
 import {connect}  from 'react-redux'
 import * as actions from '../actions/index'
 
-class Loading extends Component {
-  componentDidMount(props) {
-    console.log(this.props.loadText)
-    const stopper = this.props.loadText + '...'
-    // let myText = this.props.loadText
-    const originalText = this.props.loadText
-    setInterval(function(props) {
-      console.log(props)
-      if(this.props.loadText === stopper) {
-        this.props.setText(originalText)
-      } else {
-        this.props.setText(this.props.loadText + '.')
-      }
-    }, this.props.loadSpeed)
-  }
+const Loading = ({dots}) => (
+  <h1>Loading{dots}</h1>
+)
 
-  // componentWillUnmount() {
-  //   clearInterval(this.interval)
-  // }
-
-  render() {
-    return (
-      <div className="loading-text">
-        <p className="loading-text">{this.props.loadText}</p>
-      </div>
-    )
-  }
-}
+// class Loading extends Component {
+//   componentDidMount(props) {
+//     console.log(props.loadText)
+//     const stopper = props.loadText + '...'
+//     // let myText = this.props.loadText
+//     const originalText = props.loadText
+//     setInterval(function(props) {
+//       console.log(props)
+//       if(this.props.loadText === stopper) {
+//         this.props.setText(originalText)
+//       } else {
+//         this.props.setText(this.props.loadText + '.')
+//       }
+//     }, this.props.loadSpeed)
+//   }
+//
+//   // componentWillUnmount() {
+//   //   clearInterval(this.interval)
+//   // }
+//
+//   render() {
+//     const {loadText, setText, loadSpeed} = this.props
+//     return (
+//       <div className="loading-text">
+//         <p className="loading-text">{this.props.loadText}</p>
+//       </div>
+//     )
+//   }
+// }
 
 const mapDispatchToProps = (dispatch) => {
   return {
