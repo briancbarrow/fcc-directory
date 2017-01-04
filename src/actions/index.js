@@ -44,3 +44,18 @@ export const getProfiles = () => {
     })
   }
 }
+
+export const getGithubAccess = () => {
+  return dispatch => {
+    return axios.get('https://github.com/login/oauth/authorize', {
+      client_id: '431ac7b1f08d41e714e5',
+      scope: 'user'
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+}
