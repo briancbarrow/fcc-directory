@@ -31,22 +31,39 @@ class HeaderBar extends Component {
     this.handleLogin = this.handleLogin.bind(this)
   }
 
-  handleLogin = function() {
+  handleLogin = function(props) {
     // event.preventDefault()
     var provider = new firebase.auth.GithubAuthProvider()
 
     provider.addScope('user:email, read:org')
 
-    firebase.auth.signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a GitHub Access Token. You can use it to access the GitHub API.
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
-      console.log("token", token, "user", user)
+      ///// Code to get users orgs, isn't working at the moment, revist
+      // axios.get('https://api.github.com/user/orgs?access_token=' + token)
+      // .then(function(response) {
+      //   console.log("orgs", response)
+      // }).catch(function(error) {
+      //   console.log(error)
+      // })
+
       axios.get('https://api.github.com/user?access_token=' + token)
         .then(function(response) {
-          console.log(response.data.html_url)
-
+          console.log(response.data)
+          const data = {
+            'first_name': response.data.name,
+            'name': response.data.name.slice(0, response.data.name.indexOf(" ")),
+            'badges': [{"name": "github", "link": response.data.html_url}],
+            'image': response.data.avatar_url,
+            'visible': true,
+            "uid": response.data.id
+          }
+          this.props.postProfile(data).then(() => {
+            this.props.getProfiles()
+          })
         })
     }).catch(function(error) {
       console.log(error)
@@ -77,6 +94,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getGithubAccess: () => {
       return dispatch(actions.getGithubAccess())
+    },
+    getProfiles: () => {
+      return dispatch(actions.getProfiles())
     }
   }
 }
