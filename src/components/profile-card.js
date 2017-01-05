@@ -10,7 +10,7 @@ class ProfileCard extends Component {
   render(props) {
     return(
       <div className="card">
-        <p className="name">{this.props.info.name}</p>
+        <p className="name">{this.props.info.first_name}</p>
         <img src={this.props.info.image} className="profile-image" alt="profile"/>
         <div className="link-bar">
           {this.props.info.badges.map(function(badge, index) {
