@@ -21,7 +21,6 @@ export const setText = (text) => ({
 export const postProfile = (data) => {
   return dispatch => {
     console.log("Effect Triggered")
-    console.log(data)
     return axios.post('https://directory-server.herokuapp.com/post', data)
     .then(function (res) {
       console.log(res)

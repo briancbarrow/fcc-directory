@@ -34,7 +34,7 @@ class HeaderBar extends Component {
   handleLogin = function(props) {
     // event.preventDefault()
     var provider = new firebase.auth.GithubAuthProvider()
-
+    const self = this;
     provider.addScope('user:email, read:org')
 
     firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -53,16 +53,17 @@ class HeaderBar extends Component {
       axios.get('https://api.github.com/user?access_token=' + token)
         .then(function(response) {
           console.log(response.data)
-          const data = {
-            'first_name': response.data.name,
-            'name': response.data.name.slice(0, response.data.name.indexOf(" ")),
+          // const data =
+          console.log(self.props)
+          self.props.postProfile({
+            'name': response.data.name,
+            'first_name': response.data.name.slice(0, response.data.name.indexOf(" ")),
             'badges': [{"name": "github", "link": response.data.html_url}],
             'image': response.data.avatar_url,
             'visible': true,
             "uid": response.data.id
-          }
-          this.props.postProfile(data).then(() => {
-            this.props.getProfiles()
+          }).then(() => {
+            self.props.getProfiles()
           })
         })
     }).catch(function(error) {
