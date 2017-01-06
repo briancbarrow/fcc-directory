@@ -58,7 +58,14 @@ class HeaderBar extends Component {
           self.props.postProfile({
             'name': response.data.name,
             'first_name': response.data.name.slice(0, response.data.name.indexOf(" ")),
-            'badges': [{"name": "github", "link": response.data.html_url}],
+            'badges': [
+              {"name": "github", "link": response.data.html_url, visible: true},
+              {"name": "free-code-camp", "link": "", visible: false},
+              {"name": "stack-overflow", "link": "", visible: false},
+              {"name": "twitter", "link": "", visible: false},
+              {"name": "linkedin", "link": "", visible: false},
+              {"name": "globe", "link": "", visible: false}
+            ],
             'image': response.data.avatar_url,
             'visible': true,
             "uid": response.data.id
