@@ -104,7 +104,7 @@ class HeaderBar extends Component {
   render(props, user) {
     return (
       <div className="header-bar">
-        {this.props.data.loggedIn ? <div className="header-user"><FontAwesome name='github' /> Hi, {this.props.data.userName.slice(0, this.props.data.userName.indexOf(" "))}</div> : <div className="login-button" onClick={this.handleLogin}>Log In with Github <FontAwesome name='github' /></div> }
+        {this.props.data.loggedIn ? <div className="header-user"><FontAwesome className="menu-bars" name='bars' /> <div className="user-name">{this.props.data.userName.slice(0, this.props.data.userName.indexOf(" "))}</div></div> : <div className="login-button" onClick={this.handleLogin}>Log In with Github <FontAwesome name='github' /></div> }
       </div>
     );
   }
