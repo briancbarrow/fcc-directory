@@ -18,10 +18,15 @@ export const setText = (text) => ({
   text
 })
 
+export const LOG_IN = 'LOG_IN'
+export const logIn = (username) => ({
+  type: LOG_IN,
+  username
+})
+
 export const postProfile = (data) => {
   return dispatch => {
     console.log("Effect Triggered")
-    console.log(data)
     return axios.post('https://directory-server.herokuapp.com/post', data)
     .then(function (res) {
       console.log(res)
@@ -32,11 +37,25 @@ export const postProfile = (data) => {
   }
 }
 
+export const updateProfile = (data) => {
+  return dispatch => {
+    console.log("Update Triggered")
+    return axios.put('https://directory-server.herokuapp.com/put', data)
+    .then(function (res) {
+      console.log(res)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+  }
+}
+
 export const getProfiles = () => {
+  console.log('get triggered')
   return dispatch => {
     return axios.get('https://directory-server.herokuapp.com/profiles')
     .then(res => {
-      console.log(res)
+      console.log('get done')
       dispatch(updateProfilesState(res.data))
     })
     .catch(function (error) {
