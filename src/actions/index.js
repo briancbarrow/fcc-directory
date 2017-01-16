@@ -18,10 +18,26 @@ export const setText = (text) => ({
   text
 })
 
+export const VIEW_PROFILE = 'VIEW_PROFILE'
+export const viewProfile = () => ({
+  type: VIEW_PROFILE
+})
+
+export const HIDE_PROFILE = 'HIDE_PROFILE'
+export const hideProfile = () => ({
+  type: HIDE_PROFILE
+})
+
 export const LOG_IN = 'LOG_IN'
-export const logIn = (username) => ({
+export const logIn = (user) => ({
   type: LOG_IN,
-  username
+  user
+})
+
+export const UPDATE_USER = 'UPDATE_USER'
+export const updateUser = (badges) => ({
+  type: UPDATE_USER,
+  badges
 })
 
 export const postProfile = (data) => {
@@ -51,11 +67,9 @@ export const updateProfile = (data) => {
 }
 
 export const getProfiles = () => {
-  console.log('get triggered')
   return dispatch => {
     return axios.get('https://directory-server.herokuapp.com/profiles')
     .then(res => {
-      console.log('get done')
       dispatch(updateProfilesState(res.data))
     })
     .catch(function (error) {

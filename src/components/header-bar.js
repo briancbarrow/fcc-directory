@@ -5,6 +5,7 @@ import firebase from 'firebase'
 // import reactMixin from 'react-mixin'
 // import ReactFireMixin from 'reactfire';
 import * as actions from '../actions/index'
+import logo from '../images/logo.png'
 import axios from 'axios'
 
 
@@ -29,6 +30,7 @@ class HeaderBar extends Component {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
+    this.handleMenuClick = this.handleMenuClick.bind(this)
   }
 
   handleLogin = function(props) {
@@ -67,9 +69,13 @@ class HeaderBar extends Component {
             return user.uid = user.uid
           })
           if(isInDirectory.length === 1) {
-            console.log(user)
-            self.props.logIn(user.name)
+            console.log(user.uid)
+            let currentUser = self.props.data.profiles.find((profile) => {
+              return profile.uid === user.uid
+            })
+            self.props.logIn(currentUser)
           } else {
+            console.log("else", user)
             axios.get('https://api.github.com/users/' + response.data.login + '/orgs')
             .then(function(response) {
               let isMember = response.data.filter(function(org) {
@@ -94,6 +100,10 @@ class HeaderBar extends Component {
     })
   }
 
+  handleMenuClick() {
+    this.props.viewProfile();
+  }
+
   handleSubmit(event) {
     event.preventDefault()
     // this.props.postProfile(myData)
@@ -101,10 +111,18 @@ class HeaderBar extends Component {
     // console.log(myData)
   }
 
-  render(props, user) {
+  render(props) {
     return (
       <div className="header-bar">
-        {this.props.data.loggedIn ? <div className="header-user"><FontAwesome className="menu-bars" name='bars' /> <div className="user-name">{this.props.data.userName.slice(0, this.props.data.userName.indexOf(" "))}</div></div> : <div className="login-button" onClick={this.handleLogin}>Log In with Github <FontAwesome name='github' /></div> }
+        {this.props.data.loggedIn ? <div className="div-wrapper">
+          <img className="logo" src={logo} alt="FreeCodeCamp Salt Lake City logo" />
+          <div className="header-user" onClick={this.handleMenuClick}>
+            <FontAwesome className="menu-bars" name='bars' />
+            <div className="user-name">
+               {this.props.data.user.first_name}
+            </div>
+          </div>
+          </div> : <div className="login-button" onClick={this.handleLogin}>Log In with Github <FontAwesome name='github' /></div> }
       </div>
     );
   }
@@ -126,6 +144,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     logIn: (username) => {
       return dispatch(actions.logIn(username))
+    },
+    viewProfile: () => {
+      return dispatch(actions.viewProfile())
+    },
+    hideProfile: () => {
+      return dispatch(actions.hideProfile())
     }
   }
 }

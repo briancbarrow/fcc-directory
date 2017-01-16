@@ -33,7 +33,6 @@ html
 
 body
   background $clr-off-white
-  background radial-gradient(ellipse at center, $clr-jumpsuit2 0%, $clr-jumpsuit1 100%)
   color $clr-blue
   font-family $fnt-open-sans
   font-weight 300
@@ -46,8 +45,8 @@ body
   background-color $clr-blue
   width 100%
   display flex
-  flex-direction column
-  justify-content center
+  flex-direction row
+  justify-content space-between
   color $clr-blue
 
 .login-button
@@ -65,12 +64,29 @@ body
   color: $clr-off-white
   font-weight: 900
   font-size: 25px
-  text-align: right
-  margin-right: 20px
+  align-self: center;
+  margin-right: 15px
+  cursor: pointer;
+  flex: 0 1 auto;
+
+.logo
+  align-self: center;
+  flex: 0 1 auto;
+  height: 40px;
+
+.div-wrapper
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: 100%
 
 .menu-bars, .user-name
   display: inline-block;
   cursor: pointer;
+  margin-right: 10px;
 
 .profiles
   display flex
@@ -102,3 +118,55 @@ body
   color: $clr-blue
   &:visited
     color: $clr-blue
+
+.profile-page
+  background-color: $clr-blue
+  color: $clr-white
+  position: absolute
+  height: 99%
+  width: 99%
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  margin: auto
+
+.profile-close
+  margin: 5px
+  position: absolute;
+  right: 0;
+  cursor: pointer
+
+#profile-form
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  align-items: flex-start;
+  div
+    color white
+    font-size: 20px
+    font-weight: bold
+    width: 50%
+    label
+      display: inline-block
+      input
+        display: block
+        margin: 5px
+
+#profile-button
+  margin-top: 20px
+  border: solid $clr-off-white 1px
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)
+  background-color: $clr-off-white
+  border-radius: 5px
+  font-family $fnt-open-sans
+  color: $clr-blue
+  font-weight: bold
+  font-size: 15px
+  cursor: pointer
+  &:active
+    background-color: $clr-pale-aqua;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)
+    transform: translateY(4px);

@@ -15,7 +15,9 @@ class ProfileCard extends Component {
         <div className="link-bar">
           {this.props.info.badges.map(function(badge, index) {
             if(badge.visible === true){
-              return <a key={index} className="badge-link" href={badge.link}> <FontAwesome name={badge.name} key={badge.name} /></a>
+              return <a key={index} className="badge-link" href={badge.link}> <FontAwesome className="badge" name={badge.name} key={badge.name} /></a>
+            } else {
+              return false
             }
           })}
 
