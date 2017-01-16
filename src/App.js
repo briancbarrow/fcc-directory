@@ -3,6 +3,7 @@ import {connect}  from 'react-redux';
 import HeaderBar from './components/header-bar'
 import ProfileCard from './components/profile-card'
 import Loading from './components/loading'
+import ProfilePage from './components/profile-page'
 import * as actions from './actions/index'
 
 import './App.css'
@@ -43,7 +44,7 @@ componentDidMount() {
             : <div><h1>No Profile Yet</h1></div>}
           </div>
         )}
-
+        {this.props.data.showProfile ? <ProfilePage /> : ""}
       </div>
     )
   }
