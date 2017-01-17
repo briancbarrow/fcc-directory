@@ -44,7 +44,7 @@ componentDidMount() {
             : <div><h1>No Profiles Yet</h1></div>}
           </div>
         )}
-        {this.props.data.showProfile ? <ProfilePage /> : ""}
+        {this.props.data.showProfile ? <ProfilePage testBadges={this.props.data.user.badges} /> : ""}
       </div>
     )
   }

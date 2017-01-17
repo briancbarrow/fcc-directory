@@ -24,9 +24,8 @@ export const directoryReducer = (state=initialState, action) => {
     return Object.assign({}, state, {showProfile: true})
   } else if (action.type === actions.HIDE_PROFILE) {
     return Object.assign({}, state, {showProfile: false})
+  } else if (action.type === actions.UPDATE_USER) {
+    return Object.assign({}, state.user, {badges: action.badges})
   }
-  // else if (action.type === actions.UPDATE_USER) {
-  //   return Object.assign({}, state.user, {badges: action.badges})
-  // }
   return state
 }

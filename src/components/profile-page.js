@@ -4,13 +4,7 @@ import FontAwesome from 'react-fontawesome'
 import * as actions from '../actions/index';
 
 let currentUser = {}
-let currentBadges = [
-  // {"name": "github", "link": this.props, visible: true},
-  // {"name": "free-code-camp", "link": "", visible: false},
-  // {"name": "twitter", "link": "", visible: false},
-  // {"name": "linkedin", "link": "", visible: false},
-  // {"name": "globe", "link": "", visible: false}
-]
+let currentBadges = []
 
 
 
@@ -20,23 +14,29 @@ class ProfilePage extends Component {
     this.handleClose = this.handleClose.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.state = {
+      submitted: false
+    };
   }
 
-componentDidMount() {
-  currentUser = this.props.data.user
-  currentBadges = this.props.data.user.badges
-  console.log(currentBadges)
-  console.log(currentUser)
-}
+
+
+  componentDidMount() {
+    currentUser = this.props.data.user
+    currentBadges = this.props.data.user.badges
+  }
 
   handleClose() {
     this.props.hideProfile()
   }
 
   handleChange(event) {
-    console.log(this.props)
+    event.preventDefault()
+    console.log(event.target.value)
+    console.log(currentBadges, this.props.data.user.badges)
     for(var i = 0; i < currentBadges.length; i++) {
       if(event.target.id === currentBadges[i].name) {
+        console.log(currentUser, currentBadges[i].link)
         currentBadges[i].link = event.target.value
       }
       if(currentBadges[i].link.length !== 0) {
@@ -45,36 +45,42 @@ componentDidMount() {
         currentBadges[i].visible = false
       }
     }
-    // this.props.updateUser(currentBadges)
     Object.assign({}, currentUser, {badges: currentBadges})
   }
 
   handleSubmit(event) {
+    var timesRun = 0;
     event.preventDefault();
-    console.log(this.props.data.user)
-
-    console.log(currentUser)
+    console.log(this.state)
+    this.setState({submitted: true})
+    console.log(this.state)
+    this.interval = setInterval(() => {
+      timesRun += 1;
+      if(timesRun === 1){
+          clearInterval(this.interval);
+      }
+      this.setState({submitted: false})
+      console.log(this.state)
+    }, 3000)
     this.props.updateProfile(currentUser)
   }
-
   render(props) {
-    console.log(this.props.data.user.badges)
     return (
       <div className="profile-page">
         <FontAwesome size='2x' className="profile-close" name='close' onClick={this.handleClose}/>
         <h1>{this.props.data.user.name}</h1>
         <form id="profile-form">
           <div>
-            <label htmlFor="free-code-camp">FreeCodeCamp<input value={this.props.data.user.badges[1].link} id="free-code-camp" onChange={this.handleChange}/></label>
-            <label htmlFor="twitter">Twitter<input value={this.props.data.user.badges[3].link} id="twitter" onChange={this.handleChange}/></label>
+            <label htmlFor="free-code-camp">FreeCodeCamp<input value={this.props.testBadges[1].link} id="free-code-camp" onChange={this.handleChange}/></label>
+            <label htmlFor="twitter">Twitter<input value={this.props.testBadges[3].link} id="twitter" onChange={this.handleChange}/></label>
           </div>
           <div>
-            <label htmlFor="linkedin">LinkedIn<input value={this.props.data.user.badges[4].link} id="linkedin" onChange={this.handleChange}/></label>
-            <label htmlFor="globe">Portfolio<input value={this.props.data.user.badges[5].link} id="globe" onChange={this.handleChange}/></label>
+            <label htmlFor="linkedin">LinkedIn<input value={this.props.testBadges[4].link} id="linkedin" onChange={this.handleChange}/></label>
+            <label htmlFor="globe">Portfolio<input value={this.props.testBadges[5].link} id="globe" onChange={this.handleChange}/></label>
           </div>
           <input id="profile-button" onClick={this.handleSubmit} type="button" value="Submit Changes"/>
         </form>
-
+        {this.state.submitted ? <p className="submitted">Profile Updated. Information will be shown after page refresh.</p> : ""}
       </div>
     );
   }
