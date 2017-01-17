@@ -41,7 +41,7 @@ componentDidMount() {
                 return <ProfileCard key={index} info={profile} />
               })}
             </div>
-            : <div><h1>No Profile Yet</h1></div>}
+            : <div><h1>No Profiles Yet</h1></div>}
           </div>
         )}
         {this.props.data.showProfile ? <ProfilePage /> : ""}

@@ -9,22 +9,49 @@ import logo from '../images/logo.png'
 import axios from 'axios'
 
 
-
-// const myData = {
-//     name: "Brian Barrow",
-//     badges: [
-//       {
-//         name: "github",
-//         link: 'https://github.com/briancbarrow'
-//       },
-//       {
-//         name: "rocket",
-//         link: 'not a link'
-//       }
+// {
+//     "_id": {
+//         "$oid": "5876f6e08a2bbf00117c6a1e"
+//     },
+//     "name": "Brian Barrow",
+//     "first_name": "Brian",
+//     "image": "https://avatars.githubusercontent.com/u/13695093?v=3",
+//     "visible": true,
+//     "uid": 13695093,
+//     "badges": [
+//         {
+//             "visible": true,
+//             "link": "https://github.com/briancbarrow",
+//             "name": "github"
+//         },
+//         {
+//             "visible": true,
+//             "link": "https://www.freecodecamp.com/briancbarrow",
+//             "name": "free-code-camp"
+//         },
+//         {
+//             "visible": false,
+//             "link": "",
+//             "name": "stack-overflow"
+//         },
+//         {
+//             "visible": true,
+//             "link": "https://twitter.com/the_BrianB",
+//             "name": "twitter"
+//         },
+//         {
+//             "visible": true,
+//             "link": "https://www.linkedin.com/in/barrowbrian",
+//             "name": "linkedin"
+//         },
+//         {
+//             "visible": false,
+//             "link": "",
+//             "name": "globe"
+//         }
 //     ],
-//     image: 'http://68.media.tumblr.com/67dca3f7eeca5c98e9e057bc046d2b6c/tumblr_o1czyeSHqS1v23hsyo1_500.png'
-//   }
-
+//     "__v": 0
+// }
 class HeaderBar extends Component {
   constructor(props) {
     super(props)
@@ -65,8 +92,9 @@ class HeaderBar extends Component {
             'visible': true,
             "uid": response.data.id
           }
-          let isInDirectory = self.props.data.profiles.filter(function(user) {
-            return user.uid = user.uid
+          let isInDirectory = self.props.data.profiles.filter(function(profile) {
+            console.log(profile, user)
+            return profile.uid === user.uid
           })
           if(isInDirectory.length === 1) {
             console.log(isInDirectory)
@@ -86,7 +114,7 @@ class HeaderBar extends Component {
               // if(isMember.length === 1) {
                 self.props.logIn(user)
                 self.props.postProfile(user).then(() => {
-                  self.props.getProfiles()
+                  self.props.getProfiles()                    
                 })
               // }
             // }).catch(function(error) {
