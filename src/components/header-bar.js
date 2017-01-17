@@ -69,6 +69,7 @@ class HeaderBar extends Component {
             return user.uid = user.uid
           })
           if(isInDirectory.length === 1) {
+            console.log(isInDirectory)
             console.log(user)
             let currentUser = self.props.data.profiles.find((profile) => {
               return profile.uid === user.uid
@@ -76,8 +77,8 @@ class HeaderBar extends Component {
             self.props.logIn(currentUser)
           } else {
             console.log("else", user)
-            axios.get('https://api.github.com/users/' + response.data.login + '/orgs')
-            .then(function(response) {
+            // axios.get('https://api.github.com/users/' + response.data.login + '/orgs')
+            // .then(function(response) {
               // Removing check on GitHub Membership
               // let isMember = response.data.filter(function(org) {
               //   return org.id = 18537321
@@ -88,9 +89,9 @@ class HeaderBar extends Component {
                   self.props.getProfiles()
                 })
               // }
-            }).catch(function(error) {
-              console.log(error)
-            })
+            // }).catch(function(error) {
+            //   console.log(error)
+            // })
           }
         })
     }).catch(function(error) {
