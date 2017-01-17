@@ -71,12 +71,12 @@ class ProfilePage extends Component {
         <h1>{this.props.data.user.name}</h1>
         <form id="profile-form">
           <div>
-            <label htmlFor="free-code-camp">FreeCodeCamp<input value={this.props.testBadges[1].link} id="free-code-camp" onChange={this.handleChange}/></label>
-            <label htmlFor="twitter">Twitter<input value={this.props.testBadges[3].link} id="twitter" onChange={this.handleChange}/></label>
+            <label htmlFor="free-code-camp">FreeCodeCamp<input placeholder={this.props.testBadges[1].link} id="free-code-camp" onChange={this.handleChange}/></label>
+            <label htmlFor="twitter">Twitter<input placeholder={this.props.testBadges[3].link} id="twitter" onChange={this.handleChange}/></label>
           </div>
           <div>
-            <label htmlFor="linkedin">LinkedIn<input value={this.props.testBadges[4].link} id="linkedin" onChange={this.handleChange}/></label>
-            <label htmlFor="globe">Portfolio<input value={this.props.testBadges[5].link} id="globe" onChange={this.handleChange}/></label>
+            <label htmlFor="linkedin">LinkedIn<input placeholder={this.props.testBadges[4].link} id="linkedin" onChange={this.handleChange}/></label>
+            <label htmlFor="globe">Portfolio<input placeholder={this.props.testBadges[5].link} id="globe" onChange={this.handleChange}/></label>
           </div>
           <input id="profile-button" onClick={this.handleSubmit} type="button" value="Submit Changes"/>
         </form>
