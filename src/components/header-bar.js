@@ -79,7 +79,7 @@ class HeaderBar extends Component {
         .then(function(response) {
           user = {
             'name': response.data.name,
-            'first_name': response.data.name.slice(0, response.data.name.indexOf(" ")),
+            'first_name': (response.data.name.indexOf(" ") !== -1) ? response.data.name.slice(0, response.data.name.indexOf(" ")) : response.data.name,
             'badges': [
               {"name": "github", "link": response.data.html_url, visible: true},
               {"name": "free-code-camp", "link": "", visible: false},

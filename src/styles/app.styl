@@ -97,11 +97,14 @@ body
   flex-wrap: wrap
 
 .card
-  // border solid 1px black
-  margin auto
+  margin 5px auto
   width 200px
   display flex
   flex-direction column
+  .link-bar
+    border solid 1px $clr-gray
+    padding 5px
+    border-radius 2px;
 
 .name
   font-size 26px
@@ -110,8 +113,12 @@ body
   text-align left
 
 .profile-image
+  border solid 1px $clr-gray
   width 200px
   height 200px
+  // padding 8px 5px
+  margin 5px 0px -1px 0px
+  border-radius 2px;
 
 .badge-link
   text-decoration: none
