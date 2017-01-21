@@ -129,9 +129,7 @@ class HeaderBar extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    // this.props.postProfile(myData)
     this.props.getGithubAccess()
-    // console.log(myData)
   }
 
   render(props) {

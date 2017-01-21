@@ -42,7 +42,6 @@ export const updateUser = (badges) => ({
 
 export const postProfile = (data) => {
   return dispatch => {
-    console.log("Effect Triggered")
     return axios.post('https://directory-server.herokuapp.com/post', data)
     .then(function (res) {
       console.log(res)
@@ -55,7 +54,6 @@ export const postProfile = (data) => {
 
 export const updateProfile = (data) => {
   return dispatch => {
-    console.log("Update Triggered")
     return axios.put('https://directory-server.herokuapp.com/put', data)
     .then(function (res) {
       console.log(res)

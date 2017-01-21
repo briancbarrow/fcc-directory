@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import App from './App';
 import './styles/app.css'
 import * as firebase from 'firebase'
-// import {Render} from 'jumpsuit'
 import store from './states/store'
 
 var config = {

@@ -3,9 +3,6 @@ import FontAwesome from 'react-fontawesome'
 import {connect}  from 'react-redux';
 
 class ProfileCard extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
 
   render(props) {
     return(
