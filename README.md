@@ -1,3 +1,5 @@
+See server side code at https://github.com/briancbarrow/fcc-directory-server
+
 FreeCodeCamp Salt Lake City
 =====
 This Project is built to provide a common location for members of the Free Code Camp meetup group in Salt Lake City
