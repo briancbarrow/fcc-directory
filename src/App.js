@@ -30,10 +30,6 @@ componentDidMount() {
   })
 }
 
-// closeModal() {
-//   this.setState({modalVisible: false})
-// }
-
   render(props) {
     console.log(this.props.data.profiles)
     return (
