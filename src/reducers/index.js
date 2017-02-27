@@ -8,6 +8,7 @@ const initialState = {
   user: {},
   loggedIn: false,
   showProfile: false,
+  modalVisible: true,
 }
 
 
@@ -25,6 +26,8 @@ export const directoryReducer = (state=initialState, action) => {
     return Object.assign({}, state, {showProfile: false})
   } else if (action.type === actions.UPDATE_USER) {
     return Object.assign({}, state.user, {badges: action.badges})
+  } else if (action.type === actions.UPDATE_MODAL) {
+    return Object.assign({}, state, {modalVisible: false})
   }
   return state
 }

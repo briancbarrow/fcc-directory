@@ -4,13 +4,16 @@ import HeaderBar from './components/header-bar'
 import ProfileCard from './components/profile-card'
 import Loading from './components/loading'
 import ProfilePage from './components/profile-page'
+import IntroModal from './components/intro-modal'
 import * as actions from './actions/index'
 
 import './App.css'
 
 class App extends Component {
-state = {loading: false,
-          dots: []}
+state = {
+  loading: false,
+  dots: []
+}
 
 componentDidMount() {
   this.setState({loading: true})
@@ -27,9 +30,15 @@ componentDidMount() {
   })
 }
 
+// closeModal() {
+//   this.setState({modalVisible: false})
+// }
+
   render(props) {
+    console.log(this.props.data.profiles)
     return (
       <div className="App">
+        {this.props.data.modalVisible ? <IntroModal /> : ""}
         <HeaderBar />
         <h1 className="heading">Free Code Camp - Salt Lake City</h1>
         <h3 className="sub-heading">Directory</h3>

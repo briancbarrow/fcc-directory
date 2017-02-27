@@ -98,7 +98,7 @@ body
 
 .card
   margin 5px auto
-  width 200px
+  max-width 300px
   display flex
   flex-direction column
   .link-bar
@@ -114,7 +114,7 @@ body
 
 .profile-image
   border solid 1px $clr-gray
-  width 200px
+  max-width 300px
   height 200px
   // padding 8px 5px
   margin 5px 0px -1px 0px
@@ -123,6 +123,7 @@ body
 .badge-link
   text-decoration: none
   color: $clr-blue
+  margin: 5px
   &:visited
     color: $clr-blue
 
@@ -178,3 +179,10 @@ body
     background-color: $clr-pale-aqua;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)
     transform: translateY(4px);
+
+.intro-modal
+  background: black
+  height: 100rem
+  width: 100%
+  position: absolute
+  margin: auto

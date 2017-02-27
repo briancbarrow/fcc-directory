@@ -40,6 +40,11 @@ export const updateUser = (badges) => ({
   badges
 })
 
+export const UPDATE_MODAL = 'UPDATE_MODAL'
+export const updateModal = () => ({
+  type: UPDATE_MODAL
+})
+
 export const postProfile = (data) => {
   return dispatch => {
     return axios.post('https://directory-server.herokuapp.com/post', data)
